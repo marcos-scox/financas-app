@@ -4,9 +4,9 @@ Aplicativo Android para organizar contas, vencimentos, investimentos, reservas e
 
 ## Download
 
-<a href="https://github.com/marcos-scox/financas-app/releases/latest/download/Financas.apk">**Baixar o APK Android**</a>
+<a href="https://github.com/marcos-scox/financas-app/releases/download/v1.0.2/Financas.apk">**Baixar o APK Android — v1.0.2**</a>
 
-> O APK de release é gerado pelo GitHub Actions a cada atualização na branch `main` e publicado automaticamente na release mais recente.
+> O APK de release é gerado pelo GitHub Actions a cada atualização na branch `main` e publicado automaticamente em uma release do GitHub.
 
 ## O que já está disponível
 
