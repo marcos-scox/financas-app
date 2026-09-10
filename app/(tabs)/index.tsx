@@ -18,13 +18,13 @@ export default function HomeScreen() {
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 28 }}>
         <AppHeader eyebrow="Finanças pessoais" title="Tudo sob controle." subtitle="Organize seu dinheiro com clareza, no seu ritmo." />
 
-        <Surface style={{ backgroundColor: colors.foreground, borderColor: colors.foreground, padding: 20 }}>
+        <Surface style={{ backgroundColor: colors.surface, borderColor: colors.border, padding: 20 }}>
           <Text style={{ color: colors.primary, fontSize: 12, fontWeight: "800", letterSpacing: 1.1 }}>VISÃO GERAL</Text>
-          <Text style={{ color: colors.surface, fontSize: 25, fontWeight: "800", marginTop: 8 }}>Seu próximo passo começa aqui.</Text>
-          <Text style={{ color: "#B9CDC4", lineHeight: 20, fontSize: 13, marginTop: 7 }}>Cadastre contas, acompanhe seus investimentos e crie reservas para seus objetivos.</Text>
+          <Text style={{ color: colors.foreground, fontSize: 25, fontWeight: "800", marginTop: 8 }}>Seu próximo passo começa aqui.</Text>
+          <Text style={{ color: colors.muted, lineHeight: 20, fontSize: 13, marginTop: 7 }}>Cadastre contas, acompanhe seus investimentos e crie reservas para seus objetivos.</Text>
           <View style={{ flexDirection: "row", gap: 8, marginTop: 18 }}>
-            <View style={{ flex: 1, backgroundColor: "#1B322B", borderRadius: 15, padding: 13 }}><Text style={{ color: "#99B0A7", fontSize: 11 }}>Contas em aberto</Text><Text style={{ color: colors.surface, fontWeight: "800", fontSize: 17, marginTop: 5 }}>{formatCurrency(totalBills)}</Text></View>
-            <View style={{ flex: 1, backgroundColor: "#1B322B", borderRadius: 15, padding: 13 }}><Text style={{ color: "#99B0A7", fontSize: 11 }}>Cofrinhos</Text><Text style={{ color: colors.surface, fontWeight: "800", fontSize: 17, marginTop: 5 }}>{formatCurrency(totalPiggy)}</Text></View>
+            <View style={{ flex: 1, backgroundColor: "#0F0F14", borderRadius: 15, padding: 13 }}><Text style={{ color: colors.muted, fontSize: 11 }}>Contas em aberto</Text><Text style={{ color: colors.foreground, fontWeight: "800", fontSize: 17, marginTop: 5 }}>{formatCurrency(totalBills)}</Text></View>
+            <View style={{ flex: 1, backgroundColor: "#0F0F14", borderRadius: 15, padding: 13 }}><Text style={{ color: colors.muted, fontSize: 11 }}>Cofrinhos</Text><Text style={{ color: colors.foreground, fontWeight: "800", fontSize: 17, marginTop: 5 }}>{formatCurrency(totalPiggy)}</Text></View>
           </View>
         </Surface>
 
