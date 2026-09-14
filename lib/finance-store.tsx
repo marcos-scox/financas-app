@@ -24,7 +24,11 @@ export type Investment = {
   name: string;
   category: InvestmentCategory;
   investedAmount: number;
+  quantity?: number;
   apiUrl: string;
+  apiMethod?: string;
+  pricePath?: string;
+  currentQuote?: number;
   currentValue?: number;
   updatedAt?: string;
 };
@@ -177,16 +181,36 @@ export function FinanceProvider({ children }: { children: ReactNode }) {
     await persist({ ...state, investments });
   };
 
+  const readPath = (payload: unknown, path: string) => {
+    if (!path.trim()) return undefined;
+    return path.trim().split(".").reduce<unknown>((value, key) => {
+      if (value && typeof value === "object" && key in value) return (value as Record<string, unknown>)[key];
+      return undefined;
+    }, payload);
+  };
+
+  const findQuote = (payload: any, path: string) => {
+    const explicit = readPath(payload, path);
+    const candidates = [explicit, payload?.value, payload?.price, payload?.quote, payload?.rate, payload?.last, payload?.result?.price, payload?.result?.value, payload?.result?.quote, payload?.data?.value, payload?.data?.price, payload?.data?.quote, payload?.result?.data?.price];
+    for (const candidate of candidates) {
+      const value = typeof candidate === "number" ? candidate : Number(String(candidate ?? "").replace(",", "."));
+      if (Number.isFinite(value) && value > 0) return value;
+    }
+    return undefined;
+  };
+
   const refreshInvestment = async (investment: Investment) => {
     if (!investment.apiUrl.trim()) return { ok: false, message: "Cole uma URL de webhook para atualizar esta cotação." };
     try {
-      const response = await fetch(investment.apiUrl.trim());
+      const isJsonRpc = Boolean(investment.apiMethod?.trim()) || /quiknode\.pro|jsonrpc/i.test(investment.apiUrl);
+      const response = await fetch(investment.apiUrl.trim(), isJsonRpc ? { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: Date.now(), method: investment.apiMethod?.trim() || "getblockchaininfo", params: [] }) } : undefined);
       if (!response.ok) throw new Error("Resposta não disponível");
       const payload = await response.json();
-      const raw = payload.value ?? payload.price ?? payload.quote ?? payload.rate ?? payload.data?.value;
-      const value = typeof raw === "number" ? raw : Number(String(raw).replace(",", "."));
-      if (!Number.isFinite(value)) throw new Error("A resposta não contém um valor numérico reconhecível.");
-      const updated = { ...investment, currentValue: value, updatedAt: new Date().toISOString() };
+      const value = findQuote(payload, investment.pricePath || "");
+      if (!value) throw new Error(isJsonRpc ? "A API respondeu, mas esse método não trouxe uma cotação. Um nó Bitcoin informa blockchain/blocos; use uma API de preço ou informe o campo do preço." : "A resposta não contém um valor numérico reconhecível. Informe o caminho do campo, por exemplo data.price.");
+      const quantity = Number(investment.quantity || 0);
+      const total = quantity > 0 ? parseMoney(quantity * value) : value;
+      const updated = { ...investment, currentQuote: value, currentValue: total, updatedAt: new Date().toISOString() };
       const investments = state.investments.map((item) => (item.id === investment.id ? updated : item));
       await persist({ ...state, investments });
       return { ok: true, message: `Atualizado em ${new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}.` };

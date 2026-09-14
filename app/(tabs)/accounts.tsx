@@ -52,7 +52,8 @@ export default function AccountsScreen() {
   };
 
   return <ScreenContainer className="px-5 pt-5"><ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 32 }}>
-    <AppHeader eyebrow="Organização" title="Contas" subtitle="Veja os vencimentos e marque o que já foi pago." action={<Pressable onPress={openCreate} style={[styles.fab, { backgroundColor: colors.primary }]}><IconSymbol name="plus" size={22} color={colors.foreground} /></Pressable>} />
+    <AppHeader eyebrow="Organização" title="Contas" subtitle="Veja os vencimentos e marque o que já foi pago." action={<Pressable onPress={openCreate} style={[styles.fab, { backgroundColor: colors.primary }]}><IconSymbol name="plus" size={22} color="#0A0A0E" /></Pressable>} />
+    {!showForm ? <PrimaryButton label="Criar conta" icon="plus" onPress={openCreate} /> : null}
     <Calendar bills={bills} selectedDate={selectedDate} onSelect={(date) => { setSelectedDate(date); setDueDate(date); }} />
     <View style={{ flexDirection: "row", gap: 8, marginTop: 12 }}><Chip label={`${bills.length} cadastradas`} active /><Chip label={`${bills.filter((bill) => bill.paid).length} pagas`} /></View>
 
@@ -62,4 +63,3 @@ export default function AccountsScreen() {
     {sortedBills.length === 0 ? <EmptyState icon="creditcard.fill" title="Nenhuma conta cadastrada" body="Toque no botão + para adicionar um pagamento, definir parcelas e ativar lembretes." /> : sortedBills.map((bill) => <Surface key={bill.id} style={{ marginBottom: 10, padding: 15, opacity: bill.paid ? 0.62 : 1 }}><View style={{ flexDirection: "row", alignItems: "center" }}><Pressable onPress={() => toggleBillPaid(bill)} style={{ marginRight: 12 }}><IconSymbol name={bill.paid ? "checkmark.circle.fill" : "circle"} size={25} color={bill.paid ? colors.success : colors.muted} /></Pressable><View style={{ flex: 1 }}><Text style={{ color: colors.foreground, fontWeight: "800", fontSize: 15, textDecorationLine: bill.paid ? "line-through" : "none" }}>{bill.title}</Text><Text style={{ color: colors.muted, fontSize: 12, marginTop: 4 }}>{formatDate(bill.dueDate)} · parcela {bill.currentInstallment}/{bill.installments}</Text></View><View style={{ alignItems: "flex-end" }}><Text style={{ color: colors.foreground, fontWeight: "800" }}>{formatCurrency(bill.amount)}</Text><Pressable onPress={() => openEdit(bill)} style={{ marginTop: 6 }}><Text style={{ color: colors.success, fontSize: 11, fontWeight: "800" }}>Editar</Text></Pressable></View></View></Surface>)}
   </ScrollView></ScreenContainer>;
 }
-
