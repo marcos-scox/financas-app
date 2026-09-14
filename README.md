@@ -4,7 +4,7 @@ Aplicativo Android Finance+ para organizar contas, vencimentos, investimentos, r
 
 ## Download
 
-<a href="https://github.com/marcos-scox/financas-app/releases/download/v1.0.4/Financas.apk">**Baixar o APK Android — v1.0.4**</a>
+<a href="https://github.com/marcos-scox/financas-app/releases/download/v1.0.7/Financas.apk">**Baixar o APK Android — Finance+ v1.0.7**</a>
 
 > O APK de release é gerado pelo GitHub Actions a cada atualização na branch `main` e publicado automaticamente em uma release do GitHub.
 

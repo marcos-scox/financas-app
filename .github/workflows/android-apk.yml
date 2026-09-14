@@ -61,6 +61,6 @@ jobs:
         run: |
           VERSION="v1.0.${GITHUB_RUN_NUMBER}"
           gh release create "$VERSION" dist/Financas.apk \
-            --title "Finanças $VERSION" \
+            --title "Finance+ $VERSION" \
             --notes "APK Android release gerado automaticamente a partir do commit ${GITHUB_SHA}." \
             --latest
