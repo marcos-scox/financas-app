@@ -4,7 +4,7 @@ Aplicativo Android para organizar contas, vencimentos, investimentos, reservas e
 
 ## Download
 
-<a href="https://github.com/marcos-scox/financas-app/releases/download/v1.0.2/Financas.apk">**Baixar o APK Android — v1.0.2**</a>
+<a href="https://github.com/marcos-scox/financas-app/releases/download/v1.0.4/Financas.apk">**Baixar o APK Android — v1.0.4**</a>
 
 > O APK de release é gerado pelo GitHub Actions a cada atualização na branch `main` e publicado automaticamente em uma release do GitHub.
 
@@ -13,7 +13,7 @@ Aplicativo Android para organizar contas, vencimentos, investimentos, reservas e
 - **Início:** resumo de contas em aberto, valores guardados, próximo vencimento, investimentos e lembretes ativos.
 - **Contas:** cadastro e edição de conta, valor, quantidade de parcelas, parcela atual, vencimento em calendário mensal e check-in de pagamento.
 - **Lembretes:** opção de agendar uma notificação local do Android para cada conta cadastrada.
-- **Investimentos:** cadastro por nome, categoria (fundos, cripto ou pessoal), valor investido e webhook/API opcional para atualização de cotação.
+- **Investimentos:** cadastro por nome, categoria (fundos, cripto ou pessoal), valor inicial, quantidade de unidades e webhook/API REST ou JSON-RPC para atualização automática da cotação.
 - **Cofrinho:** cadastro de banco, valor guardado e edição dos registros.
 - **Assistente:** conversa sobre organização financeira com modo local e configuração opcional de uma API externa compatível com `POST`.
 - **Persistência local:** os dados ficam salvos no próprio aparelho usando AsyncStorage.
