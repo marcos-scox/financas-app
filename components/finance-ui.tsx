@@ -51,8 +51,8 @@ export function EmptyState({ icon, title, body }: { icon: "creditcard.fill" | "c
 export const styles = StyleSheet.create({
   header: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 26 },
   headerCopy: { flex: 1, paddingRight: 12 },
-  eyebrow: { color: "#B7FF45", fontSize: 10, fontWeight: "900", letterSpacing: 2, marginBottom: 9 },
-  dot: { color: "#A981FF" },
+  eyebrow: { color: "#FF1744", fontSize: 10, fontWeight: "900", letterSpacing: 2, marginBottom: 9 },
+  dot: { color: "#B026FF" },
   title: { color: "#F5F5EF", fontSize: 34, fontWeight: "900", letterSpacing: -1.4, lineHeight: 38 },
   subtitle: { color: "#9B9BA6", fontSize: 13, lineHeight: 19, marginTop: 8, maxWidth: 310 },
   surface: { backgroundColor: "#14141A", borderRadius: 24, padding: 18, borderWidth: 1, borderColor: "#2A2A34" },

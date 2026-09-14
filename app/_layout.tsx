@@ -30,7 +30,7 @@ export default function RootLayout() {
               <Stack.Screen name="(tabs)" />
               <Stack.Screen name="oauth/callback" />
             </Stack>
-            <StatusBar style={Platform.OS === "web" ? "dark" : "auto"} />
+            <StatusBar style="light" />
           </FinanceProvider>
         </QueryClientProvider>
       </trpc.Provider>

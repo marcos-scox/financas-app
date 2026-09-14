@@ -16,7 +16,7 @@ export default function HomeScreen() {
   return (
     <ScreenContainer className="px-5 pt-5" containerClassName="bg-background">
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 28 }}>
-        <AppHeader eyebrow="Finanças pessoais" title="Tudo sob controle." subtitle="Organize seu dinheiro com clareza, no seu ritmo." />
+        <AppHeader eyebrow="Finance+" title="Tudo sob controle." subtitle="Organize seu dinheiro com clareza, no seu ritmo." />
 
         <Surface style={{ backgroundColor: colors.surface, borderColor: colors.border, padding: 20 }}>
           <Text style={{ color: colors.primary, fontSize: 12, fontWeight: "800", letterSpacing: 1.1 }}>VISÃO GERAL</Text>

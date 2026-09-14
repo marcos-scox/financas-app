@@ -1,6 +1,6 @@
-# Finanças — Controle pessoal
+# Finance+
 
-Aplicativo Android para organizar contas, vencimentos, investimentos, reservas e dúvidas financeiras em um só lugar.
+Aplicativo Android Finance+ para organizar contas, vencimentos, investimentos, reservas e dúvidas financeiras em um só lugar.
 
 ## Download
 
