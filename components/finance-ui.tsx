@@ -25,7 +25,7 @@ export function SectionTitle({ title, action }: { title: string; action?: React.
 
 export function PrimaryButton({ label, icon = "plus", onPress, disabled }: { label: string; icon?: "plus" | "checkmark.circle.fill" | "arrow.clockwise" | "paperplane.fill"; onPress?: PressableProps["onPress"]; disabled?: boolean }) {
   const colors = useColors();
-  return <Pressable onPress={onPress} disabled={disabled} style={({ pressed }) => [styles.primaryButton, { backgroundColor: colors.primary }, pressed && styles.pressed, disabled && styles.disabled]}><IconSymbol name={icon} size={17} color="#0A0A0E" /><Text style={styles.primaryButtonText}>{label}</Text></Pressable>;
+  return <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled} style={({ pressed }) => [styles.primaryButton, { backgroundColor: "#FF1744", borderColor: "#FF1744" }, pressed && styles.pressed, disabled && styles.disabled]}><IconSymbol name={icon} size={17} color="#FFFFFF" /><Text style={styles.primaryButtonText}>{label}</Text></Pressable>;
 }
 
 export function GhostButton({ label, icon, onPress }: { label: string; icon?: "pencil" | "calendar" | "bell.fill" | "gearshape.fill"; onPress?: PressableProps["onPress"] }) {
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
   sectionTitle: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginTop: 28, marginBottom: 12 },
   sectionTitleText: { color: "#F5F5EF", fontSize: 17, fontWeight: "900", letterSpacing: -0.3 },
   primaryButton: { minHeight: 47, borderRadius: 999, paddingHorizontal: 18, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
-  primaryButtonText: { color: "#0A0A0E", fontWeight: "900", fontSize: 13 },
+  primaryButtonText: { color: "#FFFFFF", fontWeight: "900", fontSize: 13, letterSpacing: 0.2 },
   ghostButton: { minHeight: 38, borderRadius: 999, borderWidth: 1, paddingHorizontal: 13, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
   ghostButtonText: { color: "#F5F5EF", fontWeight: "800", fontSize: 12 },
   pressed: { opacity: 0.72, transform: [{ scale: 0.98 }] },
