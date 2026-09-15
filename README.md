@@ -11,11 +11,11 @@ Aplicativo Android Finance+ para organizar contas, vencimentos, investimentos, r
 ## O que já está disponível
 
 - **Início:** resumo de contas em aberto, valores guardados, próximo vencimento, investimentos e lembretes ativos.
-- **Contas:** cadastro e edição de conta, valor, quantidade de parcelas, parcela atual, vencimento em calendário mensal e check-in de pagamento.
+- **Contas:** cadastro, edição e exclusão de conta, valor, quantidade de parcelas, parcela atual, vencimento em calendário mensal e check-in de pagamento.
 - **Lembretes:** opção de agendar uma notificação local do Android para cada conta cadastrada.
 - **Investimentos:** cadastro por nome, categoria (fundos, cripto ou pessoal), valor inicial, quantidade de unidades e webhook/API REST ou JSON-RPC para atualização automática da cotação.
-- **Cofrinho:** cadastro de banco, valor guardado e edição dos registros.
-- **Assistente:** conversa sobre organização financeira com modo local e configuração opcional de uma API externa compatível com `POST`.
+- **Cofrinho:** cadastro, edição e exclusão de banco/valor guardado.
+- **Assistente:** IA Finance+ padrão com contexto de orçamento, livros de finanças, investimentos, cripto, fundos, CDI, juros, risco e reserva; também aceita uma API externa compatível com `POST`.
 - **Persistência local:** os dados ficam salvos no próprio aparelho usando AsyncStorage.
 
 ## Como instalar

@@ -50,10 +50,13 @@ type FinanceState = {
 type FinanceContextValue = FinanceState & {
   hydrated: boolean;
   saveBill: (bill: Omit<Bill, "id"> & { id?: string }) => Promise<void>;
+  deleteBill: (bill: Bill) => Promise<void>;
   toggleBillPaid: (bill: Bill) => Promise<void>;
   saveInvestment: (investment: Omit<Investment, "id"> & { id?: string }) => Promise<void>;
+  deleteInvestment: (investment: Investment) => Promise<void>;
   refreshInvestment: (investment: Investment) => Promise<{ ok: boolean; message: string }>;
   savePiggy: (piggy: Omit<Piggy, "id"> & { id?: string }) => Promise<void>;
+  deletePiggy: (piggy: Piggy) => Promise<void>;
   saveAssistantConfig: (apiUrl: string, apiKey: string) => Promise<void>;
 };
 
@@ -174,11 +177,20 @@ export function FinanceProvider({ children }: { children: ReactNode }) {
     await persist({ ...state, bills });
   };
 
+  const deleteBill = async (bill: Bill) => {
+    await cancelReminder(bill.reminderId);
+    await persist({ ...state, bills: state.bills.filter((item) => item.id !== bill.id) });
+  };
+
   const saveInvestment = async (input: Omit<Investment, "id"> & { id?: string }) => {
     const investment: Investment = { ...input, id: input.id ?? id(), investedAmount: parseMoney(input.investedAmount) };
     const exists = state.investments.some((item) => item.id === investment.id);
     const investments = exists ? state.investments.map((item) => (item.id === investment.id ? investment : item)) : [investment, ...state.investments];
     await persist({ ...state, investments });
+  };
+
+  const deleteInvestment = async (investment: Investment) => {
+    await persist({ ...state, investments: state.investments.filter((item) => item.id !== investment.id) });
   };
 
   const readPath = (payload: unknown, path: string) => {
@@ -226,11 +238,15 @@ export function FinanceProvider({ children }: { children: ReactNode }) {
     await persist({ ...state, piggies });
   };
 
+  const deletePiggy = async (piggy: Piggy) => {
+    await persist({ ...state, piggies: state.piggies.filter((item) => item.id !== piggy.id) });
+  };
+
   const saveAssistantConfig = async (apiUrl: string, apiKey: string) => {
     await persist({ ...state, assistantApiUrl: apiUrl.trim(), assistantApiKey: apiKey.trim() });
   };
 
-  const value = useMemo(() => ({ ...state, hydrated, saveBill, toggleBillPaid, saveInvestment, refreshInvestment, savePiggy, saveAssistantConfig }), [state, hydrated]);
+  const value = useMemo(() => ({ ...state, hydrated, saveBill, deleteBill, toggleBillPaid, saveInvestment, deleteInvestment, refreshInvestment, savePiggy, deletePiggy, saveAssistantConfig }), [state, hydrated]);
   return <FinanceContext.Provider value={value}>{children}</FinanceContext.Provider>;
 }
 
