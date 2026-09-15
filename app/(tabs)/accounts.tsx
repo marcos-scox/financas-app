@@ -56,7 +56,7 @@ export default function AccountsScreen() {
   };
 
   return <ScreenContainer className="px-5 pt-5"><ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 32 }}>
-    <AppHeader eyebrow="Organização" title="Contas" subtitle="Veja os vencimentos e marque o que já foi pago." action={<Pressable onPress={openCreate} style={[styles.fab, { backgroundColor: colors.primary }]}><IconSymbol name="plus" size={22} color="#0A0A0E" /></Pressable>} />
+    <AppHeader eyebrow="Organização" title="Contas" subtitle="Veja os vencimentos e marque o que já foi pago." action={<Pressable accessibilityRole="button" accessibilityLabel="Criar conta" onPress={openCreate} style={[styles.headerCreate, { backgroundColor: colors.primary }]}><IconSymbol name="plus" size={18} color="#0A0A0E" /><Text style={{ color: "#0A0A0E", fontWeight: "900", fontSize: 12 }}>CRIAR</Text></Pressable>} />
     {!showForm ? <PrimaryButton label="Criar conta" icon="plus" onPress={openCreate} /> : null}
     <Calendar bills={bills} selectedDate={selectedDate} onSelect={(date) => { setSelectedDate(date); setDueDate(date); }} />
     <View style={{ flexDirection: "row", gap: 8, marginTop: 12 }}><Chip label={`${bills.length} cadastradas`} active /><Chip label={`${bills.filter((bill) => bill.paid).length} pagas`} /></View>

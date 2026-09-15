@@ -74,5 +74,6 @@ export const styles = StyleSheet.create({
   emptyTitle: { color: "#F5F5EF", fontWeight: "900", fontSize: 16, textAlign: "center" },
   emptyBody: { color: "#9B9BA6", lineHeight: 19, fontSize: 13, textAlign: "center", marginTop: 7, maxWidth: 280 },
   fab: { width: 45, height: 45, borderRadius: 999, alignItems: "center", justifyContent: "center" },
+  headerCreate: { minHeight: 44, borderRadius: 999, paddingHorizontal: 14, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 6 },
   calendarArrow: { width: 32, height: 32, borderRadius: 999, backgroundColor: "#23232C", alignItems: "center", justifyContent: "center" },
 });
